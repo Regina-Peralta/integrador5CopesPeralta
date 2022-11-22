@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name="career_student")
-public class CareerStudent {
+public class CareerStudent implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
