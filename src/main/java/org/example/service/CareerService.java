@@ -19,4 +19,7 @@ public class CareerService {
     public List<Career> getCareers() {
         return careerRepository.getCareers();
     }
+    public Career addCareer(Career c) {
+        return careerRepository.save(c);
+    }
 }

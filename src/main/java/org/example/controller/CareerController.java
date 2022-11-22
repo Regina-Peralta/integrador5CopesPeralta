@@ -3,14 +3,13 @@ package org.example.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.example.entity.Career;
 import org.example.service.CareerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +45,19 @@ public class CareerController {
                     content = @Content) })
     public List<Career> getCareers() {
         return careerService.getCareers();
+    }
+
+    @PostMapping("/")
+    @Operation(summary = "Añadir carrera",
+            description = "Devuelve todas las carreras",
+            tags = "carreras")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Carrera insertada",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Career.class)) }),
+            @ApiResponse(responseCode = "503", description = "Bad Request",
+                    content = @Content) })
+    public Career addCareer(@RequestBody Career c) {
+        return careerService.addCareer(c);
     }
 }
