@@ -47,17 +47,4 @@ public class CareerController {
         return careerService.getCareers();
     }
 
-    @PostMapping("/")
-    @Operation(summary = "Añadir carrera",
-            description = "Devuelve todas las carreras",
-            tags = "carreras")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Carrera insertada",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Career.class)) }),
-            @ApiResponse(responseCode = "503", description = "Bad Request",
-                    content = @Content) })
-    public Career addCareer(@RequestBody Career c) {
-        return careerService.addCareer(c);
-    }
 }

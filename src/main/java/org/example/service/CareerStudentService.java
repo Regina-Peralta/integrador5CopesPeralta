@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.dto.CareerInscriptionsDTO;
 import org.example.dto.CareerReportDTO;
+import org.example.entity.CareerStudent;
 import org.example.entity.Student;
 import org.example.repository.CareerStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class CareerStudentService {
 	
 	public List<CareerReportDTO> getReportCareer(){
 		return careerStudentRepository.getReportCareer();
+	}
+
+	public CareerStudent enrollStudent(CareerStudent cs){
+		return careerStudentRepository.save(cs);
 	}
 
 }

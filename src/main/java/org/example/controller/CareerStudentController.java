@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.example.dto.CareerInscriptionsDTO;
 import org.example.dto.CareerReportDTO;
+import org.example.entity.CareerStudent;
 import org.example.entity.Student;
 import org.example.service.CareerStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,11 @@ public class CareerStudentController {
 					content = @Content) })
 	public List<CareerReportDTO> getReportCareer() {
 		return careerStudentService.getReportCareer();
+	}
+
+
+	@PostMapping("")
+	public CareerStudent enrollStudent(@RequestBody CareerStudent cs){
+		return careerStudentService.enrollStudent(cs);
 	}
 }
