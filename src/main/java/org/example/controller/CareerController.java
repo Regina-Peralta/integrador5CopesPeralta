@@ -20,7 +20,7 @@ public class CareerController {
 
 	@Autowired
     private CareerService careerService;
-    @GetMapping("/sortedByStudent")
+
     @Operation(summary = "Devolver carreras Ordenadas",
             description = "Devuelve todas las carreras ordenadas descendentemente segun la cantidad de estudiantes",
             tags = "carreras")
@@ -30,11 +30,11 @@ public class CareerController {
                             schema = @Schema(implementation = List.class)) }),
             @ApiResponse(responseCode = "404", description = "Not found",
                     content = @Content) })
+    @GetMapping("/sortedByStudent")
     public List<Career> getCareersOrderByStudents() {
         return careerService.getCareersOrderByStudents();
     }
 
-    @GetMapping("/")
     @Operation(summary = "Devolver carreras",
             description = "Devuelve todas las carreras",
             tags = "carreras")
@@ -44,6 +44,7 @@ public class CareerController {
                             schema = @Schema(implementation = List.class)) }),
             @ApiResponse(responseCode = "404", description = "Not found",
                     content = @Content) })
+    @GetMapping("/")
     public List<Career> getCareers() {
         return careerService.getCareers();
     }

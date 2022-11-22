@@ -22,7 +22,6 @@ public class CareerStudentController {
 	private CareerStudentService careerStudentService ;
 	
 
-	@GetMapping("/sortedByInscriptions")
 	@Operation(summary = "Inscriptos por carrera",
 			description = "Devuelve todos los inscriptos ordenados por carrera",
 			tags = "inscriptos")
@@ -32,11 +31,12 @@ public class CareerStudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping("/sortedByInscriptions")
 	public List<CareerInscriptionsDTO>getInscriptionSortedByCareer(){
 		return careerStudentService.getInscriptionSortedByCareer();
 	}
 	
-	@GetMapping
+
 	@Operation(summary = "Devolver inscriptos segun ciudad",
 			description = "Devuelve todos inscriptos en una ciudad determinada",
 			tags = "inscriptos")
@@ -46,11 +46,12 @@ public class CareerStudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping
 	public List<Student> getStudentsByCareerFilterCity(@RequestParam("careerId") Long id, @RequestParam("city") String city){
 		return careerStudentService.getStudentsByCareerFilterCity(id, city);
 	}
 	
-	@GetMapping("/report")
+
 	@Operation(summary = "Devolver reporte",
 			description = "Devuelve el reporte de las carreras con sus inscriptos",
 			tags = "reporte")
@@ -60,6 +61,7 @@ public class CareerStudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping("/report")
 	public List<CareerReportDTO> getReportCareer() {
 		return careerStudentService.getReportCareer();
 	}

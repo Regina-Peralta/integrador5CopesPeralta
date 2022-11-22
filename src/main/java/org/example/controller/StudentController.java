@@ -19,7 +19,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping
+
 	@Operation(summary = "Devolver estudiantes",
 			description = "Devuelve todos los estudiantes",
 			tags = "estudiantes")
@@ -29,11 +29,12 @@ public class StudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
     }
 
-    @PostMapping
+
 	@Operation(summary = "Insertar un estudiante",
 			description = "Inserta un estudiante que recibe por parametro",
 			tags = "estudiantes")
@@ -43,11 +44,12 @@ public class StudentController {
 							schema = @Schema(implementation = Boolean.class))),
 			@ApiResponse(responseCode = "400", description = "Bad request",
 					content = @Content) })
+	@PostMapping
     public boolean insertStudent(@RequestBody Student student) {
         return studentService.insertStudent(student);
     }
 	
-	@GetMapping("/sortedByName")
+
 	@Operation(summary = "Devolver estudiantes ordenados alfabeticamente",
 			description = "Devuelve todos los estudiantes ordenados alfabeticamente",
 			tags = "estudiantes")
@@ -57,11 +59,12 @@ public class StudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping("/sortedByName")
 	public List<Student> getStudentsWithOrderByName() {
 		return studentService.getStudentsWithOrderByName();
 	}
 	
-	@GetMapping("/gender/{gender}")
+
 	@Operation(summary = "Devolver estudiantes filtrados por genero",
 			description = "Devuelve todos los estudiantes filtrados por el genero que recibe por parametro",
 			tags = "estudiantes")
@@ -71,11 +74,12 @@ public class StudentController {
 							schema = @Schema(implementation = List.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping("/gender/{gender}")
 	public List<Student> getStudentsByGender(@PathVariable("gender") char gender) {
 		return studentService.getStudentsByGender(gender);
 	}
 
-	@GetMapping("/lu/{LU}")
+
 	@Operation(summary = "Devolver estudiante",
 			description = "Devuelve un estudiante segun el numero de LU",
 			tags = "estudiantes")
@@ -85,6 +89,7 @@ public class StudentController {
 							schema = @Schema(implementation = Student.class)) }),
 			@ApiResponse(responseCode = "404", description = "Not found",
 					content = @Content) })
+	@GetMapping("/lu/{LU}")
 	public Student getStudentByLU(@PathVariable("LU") Long LU) {
 		return studentService.getStudentByLU(LU);
 	}
