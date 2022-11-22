@@ -21,29 +21,13 @@ public class CareerController {
 	@Autowired
     private CareerService careerService;
 
-    @Operation(summary = "Devolver carreras Ordenadas",
-            description = "Devuelve todas las carreras ordenadas descendentemente segun la cantidad de estudiantes",
-            tags = "carreras")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista de carreras ordenadas por #estudiantes",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = List.class)) }),
-            @ApiResponse(responseCode = "404", description = "Not found",
-                    content = @Content) })
+
     @GetMapping("/sortedByStudent")
     public List<Career> getCareersOrderByStudents() {
         return careerService.getCareersOrderByStudents();
     }
 
-    @Operation(summary = "Devolver carreras",
-            description = "Devuelve todas las carreras",
-            tags = "carreras")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista de carreras",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = List.class)) }),
-            @ApiResponse(responseCode = "404", description = "Not found",
-                    content = @Content) })
+
     @GetMapping("/")
     public List<Career> getCareers() {
         return careerService.getCareers();
