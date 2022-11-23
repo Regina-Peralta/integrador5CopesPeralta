@@ -10,8 +10,9 @@ import java.util.List;
 
 @Repository
 public interface CareerRepository extends JpaRepository<Career,Long> {
-    @Query("SELECT DISTINCT c,s.size FROM Career c JOIN c.students s WHERE s.size > 0 ORDER BY s.size DESC")
+    @Query("SELECT DISTINCT c FROM Career c JOIN c.students s WHERE size(s) > 0 ORDER BY size(s)")
     List<Career> getAllCareersByStudentsAmount();
+
     @Query("SELECT DISTINCT c FROM Career c")
     List<Career> getCareers();
 
