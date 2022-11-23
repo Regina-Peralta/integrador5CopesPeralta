@@ -67,8 +67,4 @@ public class CareerStudentController {
 	}
 
 
-	@PostMapping("")
-	public CareerStudent enrollStudent(@RequestBody CareerStudent cs){
-		return careerStudentService.enrollStudent(cs);
-	}
 }

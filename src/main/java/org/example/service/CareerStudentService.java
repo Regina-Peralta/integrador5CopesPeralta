@@ -27,8 +27,5 @@ public class CareerStudentService {
 		return careerStudentRepository.getReportCareer();
 	}
 
-	public CareerStudent enrollStudent(CareerStudent cs){
-		return careerStudentRepository.save(cs);
-	}
 
 }
